@@ -1,0 +1,14 @@
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\bin\Debug\net8.0\Contabilidad_Costos.exe
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\bin\Debug\net8.0\Contabilidad_Costos.deps.json
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\bin\Debug\net8.0\Contabilidad_Costos.runtimeconfig.json
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\bin\Debug\net8.0\Contabilidad_Costos.dll
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\bin\Debug\net8.0\Contabilidad_Costos.pdb
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\obj\Debug\net8.0\Contabilidad_Costos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\obj\Debug\net8.0\Contabilidad_Costos.AssemblyInfoInputs.cache
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\obj\Debug\net8.0\Contabilidad_Costos.AssemblyInfo.cs
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\obj\Debug\net8.0\Contabilidad_Costos.csproj.CoreCompileInputs.cache
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\obj\Debug\net8.0\Contabilidad_Costos.dll
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\obj\Debug\net8.0\refint\Contabilidad_Costos.dll
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\obj\Debug\net8.0\Contabilidad_Costos.pdb
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\obj\Debug\net8.0\Contabilidad_Costos.genruntimeconfig.cache
+C:\Users\wimar\source\repos\Contabilidad_Costos\Contabilidad_Costos\obj\Debug\net8.0\ref\Contabilidad_Costos.dll
