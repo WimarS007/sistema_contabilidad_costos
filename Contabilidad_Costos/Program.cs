@@ -178,6 +178,7 @@ class Program
         {
             Encabezado("MÓDULO DE CIF");
             cif.MOINomina = nomina.TotalMOI();
+            cif.MatIndirectosInventario = inventario.TotalMaterialIndirecto();
             cif.ImprimirReporte();
             Console.WriteLine("\n  [1] Agregar costo indirecto");
             Console.WriteLine("  [2] Eliminar costo indirecto");
@@ -228,6 +229,7 @@ class Program
         reporte.MaterialDirecto             = inventario.TotalMaterialDirecto();
         reporte.ManoDeObraDirecta           = nomina.TotalMOD();
         cif.MOINomina                       = nomina.TotalMOI();
+        cif.MatIndirectosInventario         = inventario.TotalMaterialIndirecto();
         reporte.CostosIndirectosFabricacion = cif.TotalCIF();
 
         reporte.ImprimirReporte();

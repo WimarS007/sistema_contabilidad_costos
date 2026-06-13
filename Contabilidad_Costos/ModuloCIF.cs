@@ -5,6 +5,9 @@ class ModuloCIF
     /// <summary>MOI proveniente del módulo de nómina (se asigna antes de imprimir o calcular).</summary>
     public decimal MOINomina { get; set; } = 0m;
 
+    /// <summary>Materiales indirectos provenientes del módulo de inventario (se asigna antes de imprimir o calcular).</summary>
+    public decimal MatIndirectosInventario { get; set; } = 0m;
+
     public ModuloCIF()
     {
         costos = new List<CostoIndirecto>();
@@ -44,7 +47,7 @@ class ModuloCIF
 
     public decimal TotalMaterialesIndirectos()
     {
-        decimal total = 0;
+        decimal total = MatIndirectosInventario;
         foreach (CostoIndirecto c in costos)
             if (c.Tipo == TipoCIF.MaterialIndirecto)
                 total += c.Monto;
@@ -71,7 +74,7 @@ class ModuloCIF
 
     public decimal TotalCIF()
     {
-        decimal total = MOINomina;
+        decimal total = MOINomina + MatIndirectosInventario;
         foreach (CostoIndirecto c in costos)
             total += c.Monto;
         return total;
@@ -87,6 +90,18 @@ class ModuloCIF
         Console.WriteLine("  ╚══════════════════════════════════════════════════════════════╝");
 
         Console.WriteLine("\n  ▸ MATERIALES INDIRECTOS\n");
+        if (MatIndirectosInventario > 0)
+        {
+            var filasInv = new List<string[]>
+            {
+                new[] { "Mat. Indirectos – Inventario", "—", "Producción", $"C$ {MatIndirectosInventario:N2}", "Calculado en inventario" }
+            };
+            TablaConsola.Imprimir(
+                new[] { "Concepto", "Comportamiento", "Área", "Monto", "Observación" },
+                filasInv,
+                alinDer: new[] { 3 }
+            );
+        }
         ImprimirTablaCIF(TipoCIF.MaterialIndirecto);
         Console.WriteLine($"  Subtotal Mat. Indirectos:     C$ {TotalMaterialesIndirectos(),14:N2}");
 
