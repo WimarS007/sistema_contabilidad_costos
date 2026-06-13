@@ -128,7 +128,6 @@ class ModuloNomina
                     t.Nombre,
                     t.Cargo == "" ? "—" : t.Cargo,
                     ClasifLabel(t.Clasificacion),
-                    $"C$ {t.SalarioSemanal:N2}",
                     $"C$ {t.SalarioMensual:N2}",
                     $"C$ {t.Bono:N2}",
                     t.HorasExtras > 0 ? t.HorasExtras.ToString("N1") : "0",
@@ -141,7 +140,7 @@ class ModuloNomina
             filas.Add(new[]
             {
                 "", "TOTALES", "", "",
-                "", $"C$ {trabajadores.Sum(t=>t.SalarioMensual):N2}",
+                $"C$ {trabajadores.Sum(t=>t.SalarioMensual):N2}",
                 $"C$ {trabajadores.Sum(t=>t.Bono):N2}",
                 "",
                 $"C$ {trabajadores.Sum(t=>t.IngresoHorasExtras):N2}",
@@ -151,10 +150,10 @@ class ModuloNomina
 
             TablaConsola.Imprimir(
                 new[] { "No. INSS", "Nombre", "Cargo", "Clasificación",
-                        "Sal. Semanal", "Sal. Mensual", "Bono",
+                        "Sal. Mensual", "Bono",
                         "H. Extra", "Ingr. H.E.", "Antigüedad", "Total Ingresos" },
                 filas,
-                alinDer: new[] { 4, 5, 6, 7, 8, 9, 10 }
+                alinDer: new[] { 4, 5, 6, 7, 8, 9 }
             );
         }
 

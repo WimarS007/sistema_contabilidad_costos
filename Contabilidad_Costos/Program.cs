@@ -133,16 +133,14 @@ class Program
         t.Area            = LeerObligatorio("Área");
         t.Clasificacion   = ElegirClasificacion();
         t.HorasOrdinarias = LeerDecimal("Horas ordinarias del período");
-        t.SalarioSemanal  = LeerDecimal("Salario semanal (C$)");
-
-        Console.WriteLine($"\n  Salario mensual calculado (×4): C$ {t.SalarioMensual:N2}");
+        t.SalarioMensual  = LeerDecimal("Salario mensual (C$)");
 
         t.Bono            = LeerDecimal("Bono (C$, 0 si no aplica)");
         t.HorasExtras     = LeerDecimal("Horas extras (0 si no aplica)");
 
         if (t.HorasExtras > 0)
         {
-            Console.WriteLine($"  Tarifa hora extra calculada (sal.sem / h.ord × 1.5): C$ {t.TarifaHoraExtra:N2}");
+            Console.WriteLine($"  Tarifa hora extra calculada (sal.mensual / 240 × 2): C$ {t.TarifaHoraExtra:N2}");
             Console.WriteLine($"  Ingreso por horas extras: C$ {t.IngresoHorasExtras:N2}");
         }
 
@@ -179,6 +177,7 @@ class Program
         while (true)
         {
             Encabezado("MÓDULO DE CIF");
+            cif.MOINomina = nomina.TotalMOI();
             cif.ImprimirReporte();
             Console.WriteLine("\n  [1] Agregar costo indirecto");
             Console.WriteLine("  [2] Eliminar costo indirecto");
@@ -228,6 +227,7 @@ class Program
         reporte.UnidadesProducidas          = (int)LeerDecimal("Unidades producidas");
         reporte.MaterialDirecto             = inventario.TotalMaterialDirecto();
         reporte.ManoDeObraDirecta           = nomina.TotalMOD();
+        cif.MOINomina                       = nomina.TotalMOI();
         reporte.CostosIndirectosFabricacion = cif.TotalCIF();
 
         reporte.ImprimirReporte();

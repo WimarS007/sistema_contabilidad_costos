@@ -2,6 +2,9 @@ class ModuloCIF
 {
     private List<CostoIndirecto> costos;
 
+    /// <summary>MOI proveniente del módulo de nómina (se asigna antes de imprimir o calcular).</summary>
+    public decimal MOINomina { get; set; } = 0m;
+
     public ModuloCIF()
     {
         costos = new List<CostoIndirecto>();
@@ -50,7 +53,7 @@ class ModuloCIF
 
     public decimal TotalMOIndirecta()
     {
-        decimal total = 0;
+        decimal total = MOINomina;
         foreach (CostoIndirecto c in costos)
             if (c.Tipo == TipoCIF.ManoDeObraIndirecta)
                 total += c.Monto;
@@ -68,7 +71,7 @@ class ModuloCIF
 
     public decimal TotalCIF()
     {
-        decimal total = 0;
+        decimal total = MOINomina;
         foreach (CostoIndirecto c in costos)
             total += c.Monto;
         return total;
@@ -88,6 +91,18 @@ class ModuloCIF
         Console.WriteLine($"  Subtotal Mat. Indirectos:     C$ {TotalMaterialesIndirectos(),14:N2}");
 
         Console.WriteLine("\n  ▸ MANO DE OBRA INDIRECTA\n");
+        if (MOINomina > 0)
+        {
+            var filasNomina = new List<string[]>
+            {
+                new[] { "MOI – Módulo de Nómina", "—", "Producción", $"C$ {MOINomina:N2}", "Calculado en nómina" }
+            };
+            TablaConsola.Imprimir(
+                new[] { "Concepto", "Comportamiento", "Área", "Monto", "Observación" },
+                filasNomina,
+                alinDer: new[] { 3 }
+            );
+        }
         ImprimirTablaCIF(TipoCIF.ManoDeObraIndirecta);
         Console.WriteLine($"  Subtotal MOI:                 C$ {TotalMOIndirecta(),14:N2}");
 

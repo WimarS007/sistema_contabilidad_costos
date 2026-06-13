@@ -12,8 +12,8 @@ class Trabajador
     private decimal horasExtras;
 
     // ── Salario base ──────────────────────────────────────────────────────
-    /// <summary>Salario semanal ingresado por el usuario.</summary>
-    private decimal salarioSemanal;
+    /// <summary>Salario mensual ingresado por el usuario.</summary>
+    private decimal salarioMensual;
 
     // ── Otros ingresos ────────────────────────────────────────────────────
     private decimal bono;
@@ -111,13 +111,13 @@ class Trabajador
         }
     }
 
-    public decimal SalarioSemanal
+    public decimal SalarioMensual
     {
-        get { return salarioSemanal; }
+        get { return salarioMensual; }
         set
         {
-            if (value < 0) Console.WriteLine("  El salario semanal no puede ser negativo.");
-            else salarioSemanal = value;
+            if (value < 0) Console.WriteLine("  El salario mensual no puede ser negativo.");
+            else salarioMensual = value;
         }
     }
 
@@ -145,20 +145,10 @@ class Trabajador
     // Propiedades calculadas — REMUNERACIÓN BRUTA
     // ─────────────────────────────────────────────────────────────────────
 
-    /// <summary>Salario mensual = Salario semanal x 4.</summary>
-    public decimal SalarioMensual
-    {
-        get { return salarioSemanal * 4m; }
-    }
-
-    /// <summary>Tarifa hora extra = Salario semanal / horas ordinarias x 1.5</summary>
+    /// <summary>Tarifa hora extra = Salario mensual / 240 x 2</summary>
     public decimal TarifaHoraExtra
     {
-        get
-        {
-            if (horasOrdinarias <= 0) return 0m;
-            return (salarioSemanal / horasOrdinarias) * 1.5m;
-        }
+        get { return (salarioMensual / 240m) * 2m; }
     }
 
     /// <summary>Ingreso por horas extras.</summary>
@@ -257,7 +247,7 @@ class Trabajador
         clasificacion    = ClasificacionLaboral.ManoDeObraDirecta;
         horasOrdinarias  = 0;
         horasExtras      = 0;
-        salarioSemanal   = 0;
+        salarioMensual   = 0;
         bono             = 0;
         antiguedad       = 0;
     }

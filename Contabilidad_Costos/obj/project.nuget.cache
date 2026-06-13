@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6DKKjmeObxE=",
+  "dgSpecHash": "YagR8abEplk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\wimar\\source\\repos\\Contabilidad_Costos\\Contabilidad_Costos\\Contabilidad_Costos.csproj",
+  "projectFilePath": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Contabilidad_Costos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wimar\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.27\\microsoft.windowsdesktop.app.ref.8.0.27.nupkg.sha512",
     "C:\\Users\\wimar\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.27\\microsoft.netcore.app.ref.8.0.27.nupkg.sha512",

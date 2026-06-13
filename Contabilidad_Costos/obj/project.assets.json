@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wimar\\source\\repos\\Contabilidad_Costos\\Contabilidad_Costos\\Contabilidad_Costos.csproj",
+      "projectUniqueName": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Contabilidad_Costos.csproj",
       "projectName": "Contabilidad_Costos",
-      "projectPath": "C:\\Users\\wimar\\source\\repos\\Contabilidad_Costos\\Contabilidad_Costos\\Contabilidad_Costos.csproj",
+      "projectPath": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Contabilidad_Costos.csproj",
       "packagesPath": "C:\\Users\\wimar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wimar\\source\\repos\\Contabilidad_Costos\\Contabilidad_Costos\\obj\\",
+      "outputPath": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\wimar\\AppData\\Roaming\\NuGet\\NuGet.Config",
