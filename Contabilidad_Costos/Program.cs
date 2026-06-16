@@ -3,6 +3,7 @@ class Program
     static ModuloInventario inventario = new ModuloInventario();
     static ModuloNomina     nomina     = new ModuloNomina();
     static ModuloCIF        cif        = new ModuloCIF();
+    static ModuloPEPS       peps       = new ModuloPEPS();
     static string nombreEmpresa        = "";
     static string productoBase         = "";
     static bool   sistemaConfigurado   = false;
@@ -27,7 +28,8 @@ class Program
             Console.WriteLine("  [2] Módulo de Inventario");
             Console.WriteLine("  [3] Módulo de Nómina");
             Console.WriteLine("  [4] Módulo de CIF");
-            Console.WriteLine("  [5] Generar Reporte Final");
+            Console.WriteLine("  [5] Módulo PEPS (FIFO)");
+            Console.WriteLine("  [6] Generar Reporte Final");
             Console.WriteLine("  [0] Salir");
 
             string opcion = Leer("\nSelecciona una opción");
@@ -36,7 +38,8 @@ class Program
             else if (opcion == "2") MenuInventario();
             else if (opcion == "3") MenuNomina();
             else if (opcion == "4") MenuCIF();
-            else if (opcion == "5") MenuReporte();
+            else if (opcion == "5") MenuPEPS();
+            else if (opcion == "6") MenuReporte();
             else if (opcion == "0") { Console.WriteLine("\n  ¡Hasta luego!\n"); break; }
             else Console.WriteLine("\n  Opción no válida.");
         }
@@ -214,6 +217,72 @@ class Program
         Pausa();
     }
 
+    // ── PEPS ──────────────────────────────────────────────────────────────
+
+    static void MenuPEPS()
+    {
+        if (!RequiereSistema()) return;
+        while (true)
+        {
+            Encabezado("MÓDULO PEPS (FIFO) — KARDEX DE INVENTARIO");
+            peps.ImprimirKardex();
+            Console.WriteLine("\n  [1] Registrar entrada  (inventario inicial / compra)");
+            Console.WriteLine("  [2] Registrar salida   (venta / consumo)");
+            Console.WriteLine("  [3] Reiniciar kardex");
+            Console.WriteLine("  [0] Volver");
+
+            string op = Leer("\nOpción");
+            if      (op == "1") RegistrarEntradaPEPS();
+            else if (op == "2") RegistrarSalidaPEPS();
+            else if (op == "3") ConfirmarLimpiezaPEPS();
+            else if (op == "0") break;
+            else Console.WriteLine("\n  Opción no válida.");
+        }
+    }
+
+    static void RegistrarEntradaPEPS()
+    {
+        Encabezado("PEPS — REGISTRAR ENTRADA");
+        string  fecha        = LeerObligatorio("Fecha  (ej: 01-ene-2025)");
+        string  descripcion  = LeerObligatorio("Descripción  (ej: Inventario inicial / Compra)");
+        decimal cantidad     = LeerDecimalPositivo("Cantidad de unidades");
+        decimal costoUnit    = LeerDecimalPositivo("Costo unitario (C$)");
+        peps.RegistrarEntrada(fecha, descripcion, cantidad, costoUnit);
+        Pausa();
+    }
+
+    static void RegistrarSalidaPEPS()
+    {
+        Encabezado("PEPS — REGISTRAR SALIDA");
+        if (peps.UnidadesDisponibles == 0)
+        {
+            Console.WriteLine("  ⚠  No hay unidades en existencia.");
+            Pausa();
+            return;
+        }
+        Console.WriteLine($"  Unidades disponibles: {peps.UnidadesDisponibles:N2}\n");
+        string  fecha       = LeerObligatorio("Fecha  (ej: 05-ene-2025)");
+        string  descripcion = LeerObligatorio("Descripción  (ej: Venta / Consumo producción)");
+        decimal cantidad    = LeerDecimalPositivo("Cantidad de unidades a salir");
+        peps.RegistrarSalida(fecha, descripcion, cantidad);
+        Pausa();
+    }
+
+    static void ConfirmarLimpiezaPEPS()
+    {
+        Console.Write("\n  ¿Seguro que deseas eliminar todos los movimientos PEPS? [S/N]: ");
+        string resp = Console.ReadLine()?.Trim().ToUpper() ?? "";
+        if (resp == "S")
+        {
+            peps.LimpiarMovimientos();
+        }
+        else
+        {
+            Console.WriteLine("  Operación cancelada.");
+        }
+        Pausa();
+    }
+
     // ── REPORTE FINAL ─────────────────────────────────────────────────────
 
     static void MenuReporte()
@@ -232,7 +301,27 @@ class Program
         cif.MatIndirectosInventario         = inventario.TotalMaterialIndirecto();
         reporte.CostosIndirectosFabricacion = cif.TotalCIF();
 
+        // Si hay datos PEPS, ofrecer usar su costo de ventas como Material Directo
+        if (peps.TieneMovimientos)
+        {
+            Console.WriteLine($"\n  ℹ  El módulo PEPS tiene movimientos.");
+            Console.WriteLine($"     Costo de Ventas PEPS:   C$ {peps.CostoVentas:N2}");
+            Console.WriteLine($"     Material Directo actual: C$ {reporte.MaterialDirecto:N2}");
+            Console.Write("  ¿Usar el Costo de Ventas PEPS como Material Directo? [S/N]: ");
+            string resp = Console.ReadLine()?.Trim().ToUpper() ?? "";
+            if (resp == "S")
+            {
+                reporte.MaterialDirecto = peps.CostoVentas;
+                Console.WriteLine("  ✔  Material Directo sustituido por Costo de Ventas PEPS.");
+            }
+        }
+
         reporte.ImprimirReporte();
+
+        // Siempre mostrar el resumen PEPS vinculado si hay datos
+        if (peps.TieneMovimientos)
+            peps.ImprimirResumenParaReporte();
+
         Pausa();
     }
 
@@ -333,6 +422,22 @@ class Program
                 out val);
             if (ok && val >= 0) return val;
             Console.WriteLine("  Ingresa un número válido (mayor o igual a 0).");
+        }
+    }
+
+    static decimal LeerDecimalPositivo(string mensaje)
+    {
+        while (true)
+        {
+            string raw = Leer(mensaje);
+            decimal val;
+            bool ok = decimal.TryParse(
+                raw.Replace(",", "."),
+                System.Globalization.NumberStyles.Any,
+                System.Globalization.CultureInfo.InvariantCulture,
+                out val);
+            if (ok && val > 0) return val;
+            Console.WriteLine("  Ingresa un número mayor a cero.");
         }
     }
 
