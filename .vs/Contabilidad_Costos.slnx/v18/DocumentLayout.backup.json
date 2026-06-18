@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\modulonomina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\modulonomina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,10 +31,6 @@
       "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\reportecostoproduccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\moduloinventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\moduloinventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -50,36 +50,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ModuloNomina.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\ModuloNomina.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\ModuloNomina.cs",
               "ToolTip": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\ModuloNomina.cs",
               "RelativeToolTip": "Contabilidad_Costos\\ModuloNomina.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAqwA4AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-10T00:25:49.651Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-10T00:25:49.651Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Program.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\Program.cs",
               "ToolTip": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Program.cs",
               "RelativeToolTip": "Contabilidad_Costos\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAA+wAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-10T00:25:54.07Z"
+              "WhenOpened": "2026-06-10T00:25:54.07Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ReporteCostoProduccion.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\ReporteCostoProduccion.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\ReporteCostoProduccion.cs",
@@ -91,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "TablaConsola.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\TablaConsola.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\TablaConsola.cs",
@@ -103,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Trabajador.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Trabajador.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\Trabajador.cs",
@@ -115,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CostoIndirecto.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\CostoIndirecto.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\CostoIndirecto.cs",
@@ -127,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Enums.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Enums.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\Enums.cs",

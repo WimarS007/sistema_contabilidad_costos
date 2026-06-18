@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Contabilidad_Costos")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fbe4ed337bc4106c38339b37578187f7885a959d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+61de9eade9c041e152e52235f36550a5686cbd9e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Contabilidad_Costos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Contabilidad_Costos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
