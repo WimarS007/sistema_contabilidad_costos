@@ -1,12 +1,13 @@
 class Program
 {
-    static ModuloInventario inventario = new ModuloInventario();
-    static ModuloNomina     nomina     = new ModuloNomina();
-    static ModuloCIF        cif        = new ModuloCIF();
-    static ModuloPEPS       peps       = new ModuloPEPS();
-    static string nombreEmpresa        = "";
-    static string productoBase         = "";
-    static bool   sistemaConfigurado   = false;
+    static ModuloPEPS       peps           = new ModuloPEPS();          // ← materiales directos
+    static ModuloPEPS       pepsIndirecto  = new ModuloPEPS();          // ← materiales indirectos
+    static ModuloInventario inventario     = new ModuloInventario(peps, pepsIndirecto); // ← ambos conectados
+    static ModuloNomina     nomina         = new ModuloNomina();
+    static ModuloCIF        cif            = new ModuloCIF();
+    static string nombreEmpresa            = "";
+    static string productoBase             = "";
+    static bool   sistemaConfigurado       = false;
 
     static void Main()
     {
@@ -66,13 +67,17 @@ class Program
         {
             Encabezado("MÓDULO DE INVENTARIO");
             inventario.ImprimirReporte();
-            Console.WriteLine("\n  [1] Agregar material");
-            Console.WriteLine("  [2] Eliminar material");
+            Console.WriteLine("\n  [1] Agregar material  (inv. inicial / primera compra  → PEPS)");
+            Console.WriteLine("  [2] Registrar compra adicional                        → PEPS");
+            Console.WriteLine("  [3] Registrar consumo de material                     → PEPS");
+            Console.WriteLine("  [4] Eliminar material");
             Console.WriteLine("  [0] Volver");
 
             string op = Leer("\nOpción");
             if      (op == "1") AgregarMaterial();
-            else if (op == "2") EliminarMaterial();
+            else if (op == "2") CompraAdicionalMaterial();
+            else if (op == "3") ConsumirMaterial();
+            else if (op == "4") EliminarMaterial();
             else if (op == "0") break;
             else Console.WriteLine("\n  Opción no válida.");
         }
@@ -80,17 +85,39 @@ class Program
 
     static void AgregarMaterial()
     {
-        Encabezado("AGREGAR MATERIAL");
-        Material m = new Material();
+        Encabezado("AGREGAR MATERIAL  (Inventario Inicial / Primera Compra)");
+        string   fecha           = LeerObligatorio("Fecha del movimiento  (ej: 01-ene-2025)");
+        Material m               = new Material();
         m.Codigo             = LeerObligatorio("Código  (ej: MD-001)");
         m.Nombre             = LeerObligatorio("Nombre del material");
         m.Tipo               = ElegirTipoMaterial();
         m.UnidadMedida       = LeerObligatorio("Unidad de medida  (tabla, libra, metro…)");
-        m.CantidadDisponible = LeerDecimal("Cantidad disponible");
-        m.CantidadConsumida  = LeerDecimal("Cantidad consumida");
-        m.CostoUnitario      = LeerDecimal("Costo unitario (C$)");
-        inventario.AgregarMaterial(m);
+        m.CantidadDisponible = LeerDecimalPositivo("Cantidad disponible (inventario inicial)");
+        m.CantidadConsumida  = LeerDecimal("Cantidad ya consumida  (0 si es inv. inicial puro)");
+        m.CostoUnitario      = LeerDecimalPositivo("Costo unitario (C$)");
+        inventario.AgregarMaterial(m, fecha);
         Console.WriteLine($"  Costo total calculado: C$ {m.CostoTotal:N2}");
+        Pausa();
+    }
+
+    static void CompraAdicionalMaterial()
+    {
+        Encabezado("REGISTRAR COMPRA ADICIONAL  (→ nuevo lote PEPS)");
+        string  codigo    = LeerObligatorio("Código del material");
+        string  fecha     = LeerObligatorio("Fecha de la compra   (ej: 15-ene-2025)");
+        decimal cantidad  = LeerDecimalPositivo("Cantidad comprada");
+        decimal costoUnit = LeerDecimalPositivo("Costo unitario de esta compra (C$)");
+        inventario.RegistrarCompraAdicional(codigo, cantidad, costoUnit, fecha);
+        Pausa();
+    }
+
+    static void ConsumirMaterial()
+    {
+        Encabezado("REGISTRAR CONSUMO DE MATERIAL  (→ salida FIFO en PEPS)");
+        string  codigo   = LeerObligatorio("Código del material");
+        string  fecha    = LeerObligatorio("Fecha del consumo   (ej: 20-ene-2025)");
+        decimal cantidad = LeerDecimalPositivo("Cantidad consumida");
+        inventario.RegistrarConsumo(codigo, cantidad, fecha);
         Pausa();
     }
 
@@ -181,8 +208,18 @@ class Program
         {
             Encabezado("MÓDULO DE CIF");
             cif.MOINomina = nomina.TotalMOI();
-            cif.MatIndirectosInventario = inventario.TotalMaterialIndirecto();
+
+            // Usar CostoVentas PEPS de indirectos si hay movimientos; si no, el total del inventario
+            cif.MatIndirectosInventario = pepsIndirecto.TieneMovimientos
+                ? pepsIndirecto.CostoVentas
+                : inventario.TotalMaterialIndirecto();
+
             cif.ImprimirReporte();
+
+            if (pepsIndirecto.TieneMovimientos)
+                Console.WriteLine($"\n  ℹ  Material Indirecto tomado del Costo de Ventas PEPS: " +
+                                  $"C$ {pepsIndirecto.CostoVentas:N2}");
+
             Console.WriteLine("\n  [1] Agregar costo indirecto");
             Console.WriteLine("  [2] Eliminar costo indirecto");
             Console.WriteLine("  [0] Volver");
@@ -225,61 +262,37 @@ class Program
         while (true)
         {
             Encabezado("MÓDULO PEPS (FIFO) — KARDEX DE INVENTARIO");
-            peps.ImprimirKardex();
-            Console.WriteLine("\n  [1] Registrar entrada  (inventario inicial / compra)");
-            Console.WriteLine("  [2] Registrar salida   (venta / consumo)");
-            Console.WriteLine("  [3] Reiniciar kardex");
+            Console.WriteLine("  Las entradas y salidas se generan automáticamente desde");
+            Console.WriteLine("  el Módulo de Inventario (opciones 1, 2 y 3 de ese menú).\n");
+
+            // ── Kardex materiales directos ────────────────────────────────
+            peps.ImprimirKardex("MATERIALES DIRECTOS        ");
+
+            // ── Kardex materiales indirectos ──────────────────────────────
+            pepsIndirecto.ImprimirKardex("MATERIALES INDIRECTOS      ");
+
+            Console.WriteLine("\n  [1] Reiniciar kardex PEPS Directos");
+            Console.WriteLine("  [2] Reiniciar kardex PEPS Indirectos");
+            Console.WriteLine("  [3] Reiniciar AMBOS kardex");
             Console.WriteLine("  [0] Volver");
 
             string op = Leer("\nOpción");
-            if      (op == "1") RegistrarEntradaPEPS();
-            else if (op == "2") RegistrarSalidaPEPS();
-            else if (op == "3") ConfirmarLimpiezaPEPS();
+            if      (op == "1") ConfirmarLimpiezaPEPS(peps,          "Directos");
+            else if (op == "2") ConfirmarLimpiezaPEPS(pepsIndirecto, "Indirectos");
+            else if (op == "3") { ConfirmarLimpiezaPEPS(peps, "Directos"); ConfirmarLimpiezaPEPS(pepsIndirecto, "Indirectos"); }
             else if (op == "0") break;
             else Console.WriteLine("\n  Opción no válida.");
         }
     }
 
-    static void RegistrarEntradaPEPS()
+    static void ConfirmarLimpiezaPEPS(ModuloPEPS modulo, string nombre)
     {
-        Encabezado("PEPS — REGISTRAR ENTRADA");
-        string  fecha        = LeerObligatorio("Fecha  (ej: 01-ene-2025)");
-        string  descripcion  = LeerObligatorio("Descripción  (ej: Inventario inicial / Compra)");
-        decimal cantidad     = LeerDecimalPositivo("Cantidad de unidades");
-        decimal costoUnit    = LeerDecimalPositivo("Costo unitario (C$)");
-        peps.RegistrarEntrada(fecha, descripcion, cantidad, costoUnit);
-        Pausa();
-    }
-
-    static void RegistrarSalidaPEPS()
-    {
-        Encabezado("PEPS — REGISTRAR SALIDA");
-        if (peps.UnidadesDisponibles == 0)
-        {
-            Console.WriteLine("  ⚠  No hay unidades en existencia.");
-            Pausa();
-            return;
-        }
-        Console.WriteLine($"  Unidades disponibles: {peps.UnidadesDisponibles:N2}\n");
-        string  fecha       = LeerObligatorio("Fecha  (ej: 05-ene-2025)");
-        string  descripcion = LeerObligatorio("Descripción  (ej: Venta / Consumo producción)");
-        decimal cantidad    = LeerDecimalPositivo("Cantidad de unidades a salir");
-        peps.RegistrarSalida(fecha, descripcion, cantidad);
-        Pausa();
-    }
-
-    static void ConfirmarLimpiezaPEPS()
-    {
-        Console.Write("\n  ¿Seguro que deseas eliminar todos los movimientos PEPS? [S/N]: ");
+        Console.Write($"\n  ¿Seguro que deseas eliminar el kardex PEPS {nombre}? [S/N]: ");
         string resp = Console.ReadLine()?.Trim().ToUpper() ?? "";
         if (resp == "S")
-        {
-            peps.LimpiarMovimientos();
-        }
+            modulo.LimpiarMovimientos();
         else
-        {
             Console.WriteLine("  Operación cancelada.");
-        }
         Pausa();
     }
 
@@ -298,29 +311,50 @@ class Program
         reporte.MaterialDirecto             = inventario.TotalMaterialDirecto();
         reporte.ManoDeObraDirecta           = nomina.TotalMOD();
         cif.MOINomina                       = nomina.TotalMOI();
-        cif.MatIndirectosInventario         = inventario.TotalMaterialIndirecto();
+        cif.MatIndirectosInventario         = pepsIndirecto.TieneMovimientos
+                                                ? pepsIndirecto.CostoVentas
+                                                : inventario.TotalMaterialIndirecto();
         reporte.CostosIndirectosFabricacion = cif.TotalCIF();
 
-        // Si hay datos PEPS, ofrecer usar su costo de ventas como Material Directo
+        // Opción: usar Costo de Ventas PEPS de directos como Material Directo
         if (peps.TieneMovimientos)
         {
-            Console.WriteLine($"\n  ℹ  El módulo PEPS tiene movimientos.");
-            Console.WriteLine($"     Costo de Ventas PEPS:   C$ {peps.CostoVentas:N2}");
-            Console.WriteLine($"     Material Directo actual: C$ {reporte.MaterialDirecto:N2}");
-            Console.Write("  ¿Usar el Costo de Ventas PEPS como Material Directo? [S/N]: ");
+            Console.WriteLine($"\n  ℹ  PEPS Directos tiene movimientos.");
+            Console.WriteLine($"     Costo de Ventas PEPS Directos:  C$ {peps.CostoVentas:N2}");
+            Console.WriteLine($"     Material Directo actual:         C$ {reporte.MaterialDirecto:N2}");
+            Console.Write("  ¿Usar Costo de Ventas PEPS como Material Directo? [S/N]: ");
             string resp = Console.ReadLine()?.Trim().ToUpper() ?? "";
             if (resp == "S")
             {
                 reporte.MaterialDirecto = peps.CostoVentas;
-                Console.WriteLine("  ✔  Material Directo sustituido por Costo de Ventas PEPS.");
+                Console.WriteLine("  ✔  Material Directo sustituido por Costo de Ventas PEPS Directos.");
+            }
+        }
+
+        // Opción: usar Costo de Ventas PEPS de indirectos como Material Indirecto en CIF
+        if (pepsIndirecto.TieneMovimientos)
+        {
+            Console.WriteLine($"\n  ℹ  PEPS Indirectos tiene movimientos.");
+            Console.WriteLine($"     Costo de Ventas PEPS Indirectos: C$ {pepsIndirecto.CostoVentas:N2}");
+            Console.WriteLine($"     Mat. Indirecto en CIF actual:     C$ {cif.MatIndirectosInventario:N2}");
+            Console.Write("  ¿Usar Costo de Ventas PEPS como Mat. Indirecto en CIF? [S/N]: ");
+            string resp2 = Console.ReadLine()?.Trim().ToUpper() ?? "";
+            if (resp2 == "S")
+            {
+                cif.MatIndirectosInventario         = pepsIndirecto.CostoVentas;
+                reporte.CostosIndirectosFabricacion = cif.TotalCIF();
+                Console.WriteLine("  ✔  Mat. Indirecto sustituido por Costo de Ventas PEPS Indirectos.");
             }
         }
 
         reporte.ImprimirReporte();
 
-        // Siempre mostrar el resumen PEPS vinculado si hay datos
+        // Resúmenes PEPS vinculados al reporte
         if (peps.TieneMovimientos)
-            peps.ImprimirResumenParaReporte();
+            peps.ImprimirResumenParaReporte("materiales directos consumidos");
+
+        if (pepsIndirecto.TieneMovimientos)
+            pepsIndirecto.ImprimirResumenParaReporte("materiales indirectos consumidos");
 
         Pausa();
     }

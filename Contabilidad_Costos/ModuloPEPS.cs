@@ -33,10 +33,10 @@ class ModuloPEPS
 
     // ── Propiedades públicas ───────────────────────────────────────────────
 
-    public bool    TieneMovimientos  => kardex.Count > 0;
-    public decimal TotalEntradas     => acumEntradas;
-    public decimal CostoVentas       => acumSalidas;      // material consumido valorado PEPS
-    public decimal InventarioFinal   => saldoValor;
+    public bool    TieneMovimientos    => kardex.Count > 0;
+    public decimal TotalEntradas       => acumEntradas;
+    public decimal CostoVentas         => acumSalidas;      // material consumido valorado PEPS
+    public decimal InventarioFinal     => saldoValor;
     public decimal UnidadesDisponibles => saldoCantidad;
 
     // ── CRUD ───────────────────────────────────────────────────────────────
@@ -151,12 +151,14 @@ class ModuloPEPS
 
     /// <summary>
     /// Imprime el kardex PEPS completo y el resumen de valuación.
+    /// Parámetro <paramref name="etiqueta"/> permite distinguir
+    /// "MATERIALES DIRECTOS" de "MATERIALES INDIRECTOS".
     /// </summary>
-    public void ImprimirKardex()
+    public void ImprimirKardex(string etiqueta = "INVENTARIO")
     {
         Console.WriteLine();
         Console.WriteLine("  ╔══════════════════════════════════════════════════════════════╗");
-        Console.WriteLine("  ║       MÓDULO PEPS (FIFO) — KARDEX DE INVENTARIO              ║");
+        Console.WriteLine($"  ║   MÓDULO PEPS (FIFO) — KARDEX {etiqueta,-29}║");
         Console.WriteLine("  ╚══════════════════════════════════════════════════════════════╝");
 
         if (kardex.Count == 0)
@@ -212,7 +214,7 @@ class ModuloPEPS
         if (lotes.Count > 0)
         {
             Console.WriteLine("\n  ▸ LOTES EN EXISTENCIA (cola PEPS actual)\n");
-            int    num   = 1;
+            int    num    = 1;
             var    fLotes = new List<string[]>();
             foreach (LotePEPS l in lotes)
             {
@@ -238,17 +240,17 @@ class ModuloPEPS
     /// <summary>
     /// Imprime un mini-resumen para incrustar en el reporte final de producción.
     /// </summary>
-    public void ImprimirResumenParaReporte()
+    public void ImprimirResumenParaReporte(string etiqueta = "materiales consumidos")
     {
         if (!TieneMovimientos) return;
 
-        Console.WriteLine("\n  ▸ VALUACIÓN PEPS VINCULADA AL REPORTE\n");
+        Console.WriteLine($"\n  ▸ VALUACIÓN PEPS — {etiqueta.ToUpper()}\n");
 
         var filas = new List<string[]>
         {
-            new[] { "Costo de Ventas (materiales consumidos — PEPS)",  $"C$ {acumSalidas:N2}"   },
-            new[] { "Inventario Final  (materiales en existencia)",     $"C$ {saldoValor:N2}"    },
-            new[] { "Total Entradas al período",                        $"C$ {acumEntradas:N2}"  },
+            new[] { "Costo de Ventas (consumidos — PEPS)",  $"C$ {acumSalidas:N2}"   },
+            new[] { "Inventario Final  (en existencia)",    $"C$ {saldoValor:N2}"    },
+            new[] { "Total Entradas al período",            $"C$ {acumEntradas:N2}"  },
         };
 
         TablaConsola.Imprimir(
@@ -258,7 +260,6 @@ class ModuloPEPS
         );
 
         Console.WriteLine($"\n  Nota: el Costo de Ventas PEPS (C$ {acumSalidas:N2}) representa");
-        Console.WriteLine("        el costo de los materiales consumidos valorados bajo el");
-        Console.WriteLine("        método PEPS. Compáralo con el Material Directo del Inventario.");
+        Console.WriteLine($"        el costo de {etiqueta} valorados bajo el método PEPS.");
     }
 }
