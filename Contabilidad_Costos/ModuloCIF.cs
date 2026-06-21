@@ -5,8 +5,14 @@ class ModuloCIF
     /// <summary>MOI proveniente del módulo de nómina (se asigna antes de imprimir o calcular).</summary>
     public decimal MOINomina { get; set; } = 0m;
 
+    /// <summary>Comportamiento del costo de MOI tomado de Nómina (por defecto Fijo).</summary>
+    public ComportamientoCosto ComportamientoMOINomina { get; set; } = ComportamientoCosto.Fijo;
+
     /// <summary>Materiales indirectos provenientes del módulo de inventario (se asigna antes de imprimir o calcular).</summary>
     public decimal MatIndirectosInventario { get; set; } = 0m;
+
+    /// <summary>Comportamiento del costo de Mat. Indirectos tomado de Inventario (por defecto Variable).</summary>
+    public ComportamientoCosto ComportamientoMatIndirectos { get; set; } = ComportamientoCosto.Variable;
 
     public ModuloCIF()
     {
@@ -94,7 +100,7 @@ class ModuloCIF
         {
             var filasInv = new List<string[]>
             {
-                new[] { "Mat. Indirectos – Inventario", "—", "Producción", $"C$ {MatIndirectosInventario:N2}", "Calculado en inventario" }
+                new[] { "Mat. Indirectos – Inventario", ComportamientoMatIndirectos.ToString(), "Producción", $"C$ {MatIndirectosInventario:N2}", "Calculado en inventario" }
             };
             TablaConsola.Imprimir(
                 new[] { "Concepto", "Comportamiento", "Área", "Monto", "Observación" },
@@ -110,7 +116,7 @@ class ModuloCIF
         {
             var filasNomina = new List<string[]>
             {
-                new[] { "MOI – Módulo de Nómina", "—", "Producción", $"C$ {MOINomina:N2}", "Calculado en nómina" }
+                new[] { "MOI – Módulo de Nómina", ComportamientoMOINomina.ToString(), "Producción", $"C$ {MOINomina:N2}", "Calculado en nómina" }
             };
             TablaConsola.Imprimir(
                 new[] { "Concepto", "Comportamiento", "Área", "Monto", "Observación" },

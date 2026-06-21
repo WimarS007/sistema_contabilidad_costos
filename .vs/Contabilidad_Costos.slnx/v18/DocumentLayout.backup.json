@@ -7,20 +7,8 @@
       "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\modulonomina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\modulonomina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\costoindirecto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\costoindirecto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\trabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\trabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\modulocif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\modulocif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\tablaconsola.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,8 +23,20 @@
       "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\moduloinventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\modulocif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\modulocif.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\trabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\trabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\modulonomina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\modulonomina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\costoindirecto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|solutionrelative:contabilidad_costos\\costoindirecto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{77AEA947-161B-0F7E-A702-C0CBDE932BDB}|Contabilidad_Costos\\Contabilidad_Costos.csproj|c:\\users\\wimar\\onedrive\\desktop\\sistema de contabilidad\\contabilidad_costos\\contabilidad_costos\\material.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,13 +54,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "ModuloNomina.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\ModuloNomina.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\ModuloNomina.cs",
               "ToolTip": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\ModuloNomina.cs",
               "RelativeToolTip": "Contabilidad_Costos\\ModuloNomina.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAqwA4AAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAD4BAAAAAAAAAAAuwA4AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-10T00:25:49.651Z"
             },
@@ -70,52 +70,52 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Program.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\Program.cs",
-              "ToolTip": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Program.cs",
-              "RelativeToolTip": "Contabilidad_Costos\\Program.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAQwCIAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Program.cs*",
+              "RelativeToolTip": "Contabilidad_Costos\\Program.cs*",
+              "ViewState": "AgIAAJgBAAAAAAAAAAAYwAoCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-10T00:25:54.07Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "ReporteCostoProduccion.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\ReporteCostoProduccion.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\ReporteCostoProduccion.cs",
               "ToolTip": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\ReporteCostoProduccion.cs",
               "RelativeToolTip": "Contabilidad_Costos\\ReporteCostoProduccion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-10T00:25:51.255Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "TablaConsola.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\TablaConsola.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\TablaConsola.cs",
               "ToolTip": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\TablaConsola.cs",
               "RelativeToolTip": "Contabilidad_Costos\\TablaConsola.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAMAAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-10T00:25:52.02Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Trabajador.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Trabajador.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\Trabajador.cs",
               "ToolTip": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Trabajador.cs",
               "RelativeToolTip": "Contabilidad_Costos\\Trabajador.cs",
-              "ViewState": "AgIAAMEAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAOoAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-10T00:25:53.259Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "CostoIndirecto.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\CostoIndirecto.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\CostoIndirecto.cs",
@@ -127,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "Enums.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\Enums.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\Enums.cs",
@@ -139,27 +139,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "ModuloInventario.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\ModuloInventario.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\ModuloInventario.cs",
               "ToolTip": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\ModuloInventario.cs",
               "RelativeToolTip": "Contabilidad_Costos\\ModuloInventario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAA+wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-10T00:25:48.867Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "ModuloCIF.cs",
               "DocumentMoniker": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\ModuloCIF.cs",
               "RelativeDocumentMoniker": "Contabilidad_Costos\\ModuloCIF.cs",
-              "ToolTip": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\ModuloCIF.cs",
-              "RelativeToolTip": "Contabilidad_Costos\\ModuloCIF.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAA+wAAAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\wimar\\OneDrive\\Desktop\\SISTEMA DE CONTABILIDAD\\Contabilidad_Costos\\Contabilidad_Costos\\ModuloCIF.cs*",
+              "RelativeToolTip": "Contabilidad_Costos\\ModuloCIF.cs*",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAQwJ4AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-10T00:25:44.848Z"
+              "WhenOpened": "2026-06-10T00:25:44.848Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

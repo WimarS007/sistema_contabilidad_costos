@@ -1,13 +1,13 @@
 class Program
 {
-    static ModuloPEPS       peps           = new ModuloPEPS();          // ← materiales directos
-    static ModuloPEPS       pepsIndirecto  = new ModuloPEPS();          // ← materiales indirectos
-    static ModuloInventario inventario     = new ModuloInventario(peps, pepsIndirecto); // ← ambos conectados
-    static ModuloNomina     nomina         = new ModuloNomina();
-    static ModuloCIF        cif            = new ModuloCIF();
-    static string nombreEmpresa            = "";
-    static string productoBase             = "";
-    static bool   sistemaConfigurado       = false;
+    static ModuloPEPS peps = new ModuloPEPS();          // ← materiales directos
+    static ModuloPEPS pepsIndirecto = new ModuloPEPS();          // ← materiales indirectos
+    static ModuloInventario inventario = new ModuloInventario(peps, pepsIndirecto); // ← ambos conectados
+    static ModuloNomina nomina = new ModuloNomina();
+    static ModuloCIF cif = new ModuloCIF();
+    static string nombreEmpresa = "";
+    static string productoBase = "";
+    static bool sistemaConfigurado = false;
 
     static void Main()
     {
@@ -35,7 +35,7 @@ class Program
 
             string opcion = Leer("\nSelecciona una opción");
 
-            if      (opcion == "1") ConfigurarEmpresa();
+            if (opcion == "1") ConfigurarEmpresa();
             else if (opcion == "2") MenuInventario();
             else if (opcion == "3") MenuNomina();
             else if (opcion == "4") MenuCIF();
@@ -51,8 +51,8 @@ class Program
     static void ConfigurarEmpresa()
     {
         Encabezado("CONFIGURAR EMPRESA");
-        nombreEmpresa      = LeerObligatorio("Nombre de la empresa");
-        productoBase       = LeerObligatorio("Producto a costear");
+        nombreEmpresa = LeerObligatorio("Nombre de la empresa");
+        productoBase = LeerObligatorio("Producto a costear");
         sistemaConfigurado = true;
         Console.WriteLine($"\n  ✔  Sistema configurado: {nombreEmpresa} — {productoBase}");
         Pausa();
@@ -74,7 +74,7 @@ class Program
             Console.WriteLine("  [0] Volver");
 
             string op = Leer("\nOpción");
-            if      (op == "1") AgregarMaterial();
+            if (op == "1") AgregarMaterial();
             else if (op == "2") CompraAdicionalMaterial();
             else if (op == "3") ConsumirMaterial();
             else if (op == "4") EliminarMaterial();
@@ -86,15 +86,15 @@ class Program
     static void AgregarMaterial()
     {
         Encabezado("AGREGAR MATERIAL  (Inventario Inicial / Primera Compra)");
-        string   fecha           = LeerObligatorio("Fecha del movimiento  (ej: 01-ene-2025)");
-        Material m               = new Material();
-        m.Codigo             = LeerObligatorio("Código  (ej: MD-001)");
-        m.Nombre             = LeerObligatorio("Nombre del material");
-        m.Tipo               = ElegirTipoMaterial();
-        m.UnidadMedida       = LeerObligatorio("Unidad de medida  (tabla, libra, metro…)");
+        string fecha = LeerObligatorio("Fecha del movimiento  (ej: 01-ene-2025)");
+        Material m = new Material();
+        m.Codigo = LeerObligatorio("Código  (ej: MD-001)");
+        m.Nombre = LeerObligatorio("Nombre del material");
+        m.Tipo = ElegirTipoMaterial();
+        m.UnidadMedida = LeerObligatorio("Unidad de medida  (tabla, libra, metro…)");
         m.CantidadDisponible = LeerDecimalPositivo("Cantidad disponible (inventario inicial)");
-        m.CantidadConsumida  = LeerDecimal("Cantidad ya consumida  (0 si es inv. inicial puro)");
-        m.CostoUnitario      = LeerDecimalPositivo("Costo unitario (C$)");
+        m.CantidadConsumida = LeerDecimal("Cantidad ya consumida  (0 si es inv. inicial puro)");
+        m.CostoUnitario = LeerDecimalPositivo("Costo unitario (C$)");
         inventario.AgregarMaterial(m, fecha);
         Console.WriteLine($"  Costo total calculado: C$ {m.CostoTotal:N2}");
         Pausa();
@@ -103,9 +103,9 @@ class Program
     static void CompraAdicionalMaterial()
     {
         Encabezado("REGISTRAR COMPRA ADICIONAL  (→ nuevo lote PEPS)");
-        string  codigo    = LeerObligatorio("Código del material");
-        string  fecha     = LeerObligatorio("Fecha de la compra   (ej: 15-ene-2025)");
-        decimal cantidad  = LeerDecimalPositivo("Cantidad comprada");
+        string codigo = LeerObligatorio("Código del material");
+        string fecha = LeerObligatorio("Fecha de la compra   (ej: 15-ene-2025)");
+        decimal cantidad = LeerDecimalPositivo("Cantidad comprada");
         decimal costoUnit = LeerDecimalPositivo("Costo unitario de esta compra (C$)");
         inventario.RegistrarCompraAdicional(codigo, cantidad, costoUnit, fecha);
         Pausa();
@@ -114,8 +114,8 @@ class Program
     static void ConsumirMaterial()
     {
         Encabezado("REGISTRAR CONSUMO DE MATERIAL  (→ salida FIFO en PEPS)");
-        string  codigo   = LeerObligatorio("Código del material");
-        string  fecha    = LeerObligatorio("Fecha del consumo   (ej: 20-ene-2025)");
+        string codigo = LeerObligatorio("Código del material");
+        string fecha = LeerObligatorio("Fecha del consumo   (ej: 20-ene-2025)");
         decimal cantidad = LeerDecimalPositivo("Cantidad consumida");
         inventario.RegistrarConsumo(codigo, cantidad, fecha);
         Pausa();
@@ -142,7 +142,7 @@ class Program
             Console.WriteLine("  [0] Volver");
 
             string op = Leer("\nOpción");
-            if      (op == "1") AgregarTrabajador();
+            if (op == "1") AgregarTrabajador();
             else if (op == "2") EliminarTrabajador();
             else if (op == "0") break;
             else Console.WriteLine("\n  Opción no válida.");
@@ -158,15 +158,15 @@ class Program
         Console.Write("  > No. INSS (opcional, Enter para omitir): ");
         t.NoINSS = Console.ReadLine()?.Trim() ?? "";
 
-        t.Nombre          = LeerObligatorio("Nombre completo");
-        t.Cargo           = LeerObligatorio("Cargo");
-        t.Area            = LeerObligatorio("Área");
-        t.Clasificacion   = ElegirClasificacion();
+        t.Nombre = LeerObligatorio("Nombre completo");
+        t.Cargo = LeerObligatorio("Cargo");
+        t.Area = LeerObligatorio("Área");
+        t.Clasificacion = ElegirClasificacion();
         t.HorasOrdinarias = LeerDecimal("Horas ordinarias del período");
-        t.SalarioMensual  = LeerDecimal("Salario mensual (C$)");
+        t.SalarioMensual = LeerDecimal("Salario mensual (C$)");
 
-        t.Bono            = LeerDecimal("Bono (C$, 0 si no aplica)");
-        t.HorasExtras     = LeerDecimal("Horas extras (0 si no aplica)");
+        t.Bono = LeerDecimal("Bono (C$, 0 si no aplica)");
+        t.HorasExtras = LeerDecimal("Horas extras (0 si no aplica)");
 
         if (t.HorasExtras > 0)
         {
@@ -220,13 +220,34 @@ class Program
                 Console.WriteLine($"\n  ℹ  Material Indirecto tomado del Costo de Ventas PEPS: " +
                                   $"C$ {pepsIndirecto.CostoVentas:N2}");
 
+            if (cif.MOINomina > 0)
+                Console.WriteLine($"  ℹ  MOI de Nómina → Comportamiento: {cif.ComportamientoMOINomina}  (opción [3] para cambiar)");
+            if (cif.MatIndirectosInventario > 0)
+                Console.WriteLine($"  ℹ  Mat. Indirectos de Inventario → Comportamiento: {cif.ComportamientoMatIndirectos}  (opción [4] para cambiar)");
+
             Console.WriteLine("\n  [1] Agregar costo indirecto");
             Console.WriteLine("  [2] Eliminar costo indirecto");
+            Console.WriteLine("  [3] Cambiar comportamiento: MOI de Nómina");
+            Console.WriteLine("  [4] Cambiar comportamiento: Mat. Indirectos de Inventario");
             Console.WriteLine("  [0] Volver");
 
             string op = Leer("\nOpción");
-            if      (op == "1") AgregarCIF();
+            if (op == "1") AgregarCIF();
             else if (op == "2") EliminarCIF();
+            else if (op == "3")
+            {
+                Console.WriteLine($"\n  Comportamiento actual: {cif.ComportamientoMOINomina}");
+                cif.ComportamientoMOINomina = ElegirComportamiento();
+                Console.WriteLine("  ✔  Comportamiento de MOI actualizado.");
+                Pausa();
+            }
+            else if (op == "4")
+            {
+                Console.WriteLine($"\n  Comportamiento actual: {cif.ComportamientoMatIndirectos}");
+                cif.ComportamientoMatIndirectos = ElegirComportamiento();
+                Console.WriteLine("  ✔  Comportamiento de Mat. Indirectos actualizado.");
+                Pausa();
+            }
             else if (op == "0") break;
             else Console.WriteLine("\n  Opción no válida.");
         }
@@ -236,13 +257,13 @@ class Program
     {
         Encabezado("AGREGAR COSTO INDIRECTO DE FABRICACIÓN");
         CostoIndirecto c = new CostoIndirecto();
-        c.Concepto        = LeerObligatorio("Concepto  (ej: Energía eléctrica de planta)");
-        c.Tipo            = ElegirTipoCIF();
-        c.Comportamiento  = ElegirComportamiento();
-        c.Monto           = LeerDecimal("Monto (C$)");
+        c.Concepto = LeerObligatorio("Concepto  (ej: Energía eléctrica de planta)");
+        c.Tipo = ElegirTipoCIF();
+        c.Comportamiento = ElegirComportamiento();
+        c.Monto = LeerDecimal("Monto (C$)");
         c.AreaRelacionada = LeerObligatorio("Área relacionada");
         Console.Write("  > Observación (opcional, Enter para omitir): ");
-        c.Observacion     = Console.ReadLine() ?? "";
+        c.Observacion = Console.ReadLine() ?? "";
         cif.AgregarCosto(c);
         Pausa();
     }
@@ -277,7 +298,7 @@ class Program
             Console.WriteLine("  [0] Volver");
 
             string op = Leer("\nOpción");
-            if      (op == "1") ConfirmarLimpiezaPEPS(peps,          "Directos");
+            if (op == "1") ConfirmarLimpiezaPEPS(peps, "Directos");
             else if (op == "2") ConfirmarLimpiezaPEPS(pepsIndirecto, "Indirectos");
             else if (op == "3") { ConfirmarLimpiezaPEPS(peps, "Directos"); ConfirmarLimpiezaPEPS(pepsIndirecto, "Indirectos"); }
             else if (op == "0") break;
@@ -304,14 +325,14 @@ class Program
         Encabezado("REPORTE FINAL");
 
         ReporteCostoProduccion reporte = new ReporteCostoProduccion();
-        reporte.NombreEmpresa               = nombreEmpresa;
-        reporte.ProductoFabricado           = productoBase;
-        reporte.Periodo                     = LeerObligatorio("Período  (ej: Enero 2025)");
-        reporte.UnidadesProducidas          = (int)LeerDecimal("Unidades producidas");
-        reporte.MaterialDirecto             = inventario.TotalMaterialDirecto();
-        reporte.ManoDeObraDirecta           = nomina.TotalMOD();
-        cif.MOINomina                       = nomina.TotalMOI();
-        cif.MatIndirectosInventario         = pepsIndirecto.TieneMovimientos
+        reporte.NombreEmpresa = nombreEmpresa;
+        reporte.ProductoFabricado = productoBase;
+        reporte.Periodo = LeerObligatorio("Período  (ej: Enero 2025)");
+        reporte.UnidadesProducidas = (int)LeerDecimal("Unidades producidas");
+        reporte.MaterialDirecto = inventario.TotalMaterialDirecto();
+        reporte.ManoDeObraDirecta = nomina.TotalMOD();
+        cif.MOINomina = nomina.TotalMOI();
+        cif.MatIndirectosInventario = pepsIndirecto.TieneMovimientos
                                                 ? pepsIndirecto.CostoVentas
                                                 : inventario.TotalMaterialIndirecto();
         reporte.CostosIndirectosFabricacion = cif.TotalCIF();
@@ -341,7 +362,7 @@ class Program
             string resp2 = Console.ReadLine()?.Trim().ToUpper() ?? "";
             if (resp2 == "S")
             {
-                cif.MatIndirectosInventario         = pepsIndirecto.CostoVentas;
+                cif.MatIndirectosInventario = pepsIndirecto.CostoVentas;
                 reporte.CostosIndirectosFabricacion = cif.TotalCIF();
                 Console.WriteLine("  ✔  Mat. Indirecto sustituido por Costo de Ventas PEPS Indirectos.");
             }
